@@ -43,7 +43,7 @@ void loop() {
   analogWrite(10, 90); //ENB pin
   
   seguelinha();
-  leitura();
+  //leitura();
  
  
 
