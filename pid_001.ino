@@ -1,18 +1,4 @@
-float kp = 1.8;
-float ki = 0.001;
-float kd = 0.1;
 
-int erro = 0;
-int preto = 930;
-int branco = 900;
-int erro_branco = 0;
-
-int erro_anterior = 0;
-float integral = 0;
-
-int posicao = qtr.readLineBlack(sensorValues);
-
-erro = posicao - 3500;
 
 void calibracao(){
   direita();
@@ -125,33 +111,58 @@ void PID() {
 
 }
 
-void lerposicaosensores(){
-  float peso1 = 4.0;
-  float peso2 = 3.0;
-  float peso3 = 2.0;
-  float peso4 = 1.0;
-  float peso5 = 1.0;
-  float peso6 = 2.0;
-  float peso7 = 3.0;
-  float peso8 = 4.0;
+// void lerposicaosensores(){
+//   float peso1 = 4.0;
+//   float peso2 = 3.0;
+//   float peso3 = 2.0;
+//   float peso4 = 1.0;
+//   float peso5 = 1.0;
+//   float peso6 = 2.0;
+//   float peso7 = 3.0;
+//   float peso8 = 4.0;
 
-  float sensores_esquerda = sensor1 * peso1 + sensor2 * peso2 + sensor3 * peso3 + sensor4 * peso4;
-  float Mp_esquerda = sensores_esquerda / (peso1 + peso2 + peso3 + peso4);
+//   float sensores_esquerda = sensor1 * peso1 + sensor2 * peso2 + sensor3 * peso3 + sensor4 * peso4;
+//   float Mp_esquerda = sensores_esquerda / (peso1 + peso2 + peso3 + peso4);
 
-  float sensores_direita = sensor8 * peso8 + sensor7 * peso7 + sensor6 * peso6 + sensor5 * peso5;
-  float Mp_direita = sensores_direita / (peso5 + peso6 + peso7 + peso8);
+//   float sensores_direita = sensor8 * peso8 + sensor7 * peso7 + sensor6 * peso6 + sensor5 * peso5;
+//   float Mp_direita = sensores_direita / (peso5 + peso6 + peso7 + peso8);
 
-  // erro = (Mp_esquerda - Mp_direita);
-  // erro = (Mp_esquerda - Mp_direita) - erro_branco;
-  erro = Mp_esquerda - Mp_direita;
+//   // erro = (Mp_esquerda - Mp_direita);
+//   // erro = (Mp_esquerda - Mp_direita) - erro_branco;
+//   erro = Mp_esquerda - Mp_direita;
 
-Serial.print("Mp esquerda: ");
-Serial.println(Mp_esquerda);
+// Serial.print("Mp esquerda: ");
+// Serial.println(Mp_esquerda);
 
-Serial.print("Mp direita: ");
-Serial.println(Mp_direita);
+// Serial.print("Mp direita: ");
+// Serial.println(Mp_direita);
 
-Serial.print("Erro bruto: ");
-Serial.println(erro);
-  
+// Serial.print("Erro bruto: ");
+// Serial.println(erro);
+
+//   uint16_t posicao = qtr.readLineBlack(sensorValues);
+
+//   erro = posicao - 3500;
+
+//   Serial.print("Posicao:");
+//   Serial.println(posicao);
+
+//   Serial.print("Erro:");
+//   Serial.println(erro);
+
+// }
+
+  void calibrarQTR(){
+
+  Serial.println("Calibrando...");
+
+  for(int i = 0; i < 200; i++){
+
+    qtr.calibrate();
+
+    delay(10);
+  }
+
+  Serial.println("Fim calibracao");
+
 }
