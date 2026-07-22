@@ -21,13 +21,13 @@ int sensor7 = 0;
 int sensor8 = 0;
 
 //MOTORES
-int motor1pin1 = 22;
-int motor1pin2 = 24;
+int motor1pin1 = 26;
+int motor1pin2 = 28;
 
-int motor2pin1 = 26;
-int  motor2pin2 = 28;
+int motor2pin1 = 24;
+int  motor2pin2 = 22;
 
-int velocidade_base = 40;
+int velocidade_base = 0;
 
 
 void setup() {
@@ -46,7 +46,10 @@ void setup() {
   pinMode(ledControlPin, OUTPUT);
   digitalWrite(ledControlPin, HIGH);
 
-  
+  //calibracao();
+
+  analogWrite(9, 100); //ENA  pin
+  analogWrite(10, 100); //ENB pin
 }
 
 void loop() {
@@ -64,7 +67,7 @@ void loop() {
   //funções -------------------------------------
   //leitura();
   PID();
-  
+  //parar();
  
 
 }
